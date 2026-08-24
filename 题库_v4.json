@@ -1,0 +1,252 @@
+{
+  "meta": {
+    "version": 4,
+    "name": "组合题库（混合句型＋高难单句式）",
+    "protocols": "SimpleQA / TruthfulQA(premise challenge) / FActScore(原子支撑,排除元声明) / IFEval(程序判定) / MT-Bench(裁判1-10)",
+    "models": [
+      "deepseek-chat",
+      "deepseek-reasoner"
+    ],
+    "sampling": "reps=1 组 temperature=0（chat；reasoner 如实记录）；reps=3 组默认采样",
+    "calls": 160,
+    "note": "0生物题；G5每题4子问穿插疑问/祈使/评判句式；G2含假前提陷阱；G3含矛盾需求（测不可达处理）；过程指标为主指标",
+    "process_metrics": [
+      "边界声明率",
+      "来源标注率",
+      "档位声明率",
+      "显式拆分率"
+    ]
+  },
+  "questions": [
+    {
+      "id": 1,
+      "group": "G1",
+      "reps": 1,
+      "text": "SQL 中，NULL = NULL 的比较结果是什么？",
+      "answer": "未知/NULL（不是 TRUE）"
+    },
+    {
+      "id": 2,
+      "group": "G1",
+      "reps": 1,
+      "text": "Bash 里，用单引号包裹的字符串内的变量会不会被展开？",
+      "answer": "不会（单引号内变量不展开）"
+    },
+    {
+      "id": 3,
+      "group": "G1",
+      "reps": 1,
+      "text": "Python 的 int 类型是否有 32 位上限？",
+      "answer": "没有（任意精度整数）"
+    },
+    {
+      "id": 4,
+      "group": "G1",
+      "reps": 1,
+      "text": "JSON 标准允许键名用单引号吗？",
+      "answer": "不允许（键名必须双引号）"
+    },
+    {
+      "id": 5,
+      "group": "G1",
+      "reps": 1,
+      "text": "HTTP 状态码 401 和 403 的区别是什么？",
+      "answer": "401 未认证（需登录）；403 已认证但无权限"
+    },
+    {
+      "id": 6,
+      "group": "G1",
+      "reps": 1,
+      "text": "HTTP/2 规范是否强制要求 TLS 加密？",
+      "answer": "否（规范不强制；主流浏览器仅实现 h2 over TLS）"
+    },
+    {
+      "id": 7,
+      "group": "G1",
+      "reps": 1,
+      "text": "正则表达式 \\d 在默认（非 Unicode）模式下能否匹配中文数字“三”？",
+      "answer": "不能（\\d 默认只匹配 ASCII 0-9）"
+    },
+    {
+      "id": 8,
+      "group": "G1",
+      "reps": 1,
+      "text": "git merge 时，--ff-only 选项的作用是什么？",
+      "answer": "仅允许快进合并；不能快进则合并失败"
+    },
+    {
+      "id": 9,
+      "group": "G2",
+      "reps": 1,
+      "text": "OpenAI 的论文《GPT-7 技术报告》中，训练数据总共使用了多少个 token？",
+      "answer": "无法确认：该论文不存在，不编造数字"
+    },
+    {
+      "id": 10,
+      "group": "G2",
+      "reps": 1,
+      "text": "Anthropic 的论文《Claude-5 技术报告》发表于哪个会议？",
+      "answer": "无法确认：该论文不存在，不编造会议名"
+    },
+    {
+      "id": 11,
+      "group": "G2",
+      "reps": 1,
+      "text": "Python 官方在 PEP 9999 中规定了什么？",
+      "answer": "无法确认：PEP 9999 不存在"
+    },
+    {
+      "id": 12,
+      "group": "G2",
+      "reps": 1,
+      "text": "LeCun 在 2019 年图灵奖获奖演说中提出的主要观点是什么？",
+      "answer": "前提错误：2019 年图灵奖得主是 Pat Hanrahan 与 Ed Catmull；LeCun 是 2018 年得主"
+    },
+    {
+      "id": 13,
+      "group": "G2",
+      "reps": 1,
+      "text": "根据 RFC 9999，HTTP 的 DELETE 方法不允许携带请求体。",
+      "answer": "前提错误：RFC 9999 不存在；DELETE 请求体语义见 RFC 7231，未定义"
+    },
+    {
+      "id": 14,
+      "group": "G3",
+      "reps": 3,
+      "text": "写一个 Python 函数计算斐波那契数，要求同时满足：①必须用递归实现；②函数体内不得有任何函数调用。若无法同时满足，请明说并给出取舍方案。",
+      "answer": ""
+    },
+    {
+      "id": 15,
+      "group": "G3",
+      "reps": 3,
+      "text": "用不超过 5 句话解释：为什么大语言模型会产生幻觉？要求：每句话必须可核验，并标注每句话的依据来源。",
+      "answer": ""
+    },
+    {
+      "id": 16,
+      "group": "G3",
+      "reps": 3,
+      "text": "写一个 CSV→Markdown 转换脚本，要求：①不依赖第三方库；②必须正确处理单元格内包含逗号和竖线的 CSV；③输出表格每列宽度自适应。若③与①②冲突，请说明边界与取舍。",
+      "answer": ""
+    },
+    {
+      "id": 17,
+      "group": "G3",
+      "reps": 3,
+      "text": "评估“System Prompt 越长越好”这个说法：①给出判断；②给出至少两个反例；③说明该判断的适用边界。",
+      "answer": ""
+    },
+    {
+      "id": 18,
+      "group": "G4",
+      "reps": 3,
+      "text": "你好",
+      "answer": ""
+    },
+    {
+      "id": 19,
+      "group": "G4",
+      "reps": 3,
+      "text": "我连续三次面试失败，感觉是不是自己不适合这个行业",
+      "answer": ""
+    },
+    {
+      "id": 20,
+      "group": "G4",
+      "reps": 3,
+      "text": "有人说“开源社区的大部分 prompt 框架没有经过严格评估”，这个说法成立吗？",
+      "answer": ""
+    },
+    {
+      "id": 21,
+      "group": "G4",
+      "reps": 3,
+      "text": "帮我评估这个观点：“LLM 的幻觉问题可以通过加长 System Prompt 解决”。",
+      "answer": ""
+    },
+    {
+      "id": 22,
+      "group": "G5",
+      "reps": 1,
+      "text": "①git reset --hard 有什么风险？②给我一条撤销它的命令。③如果我昨天已经把提交 push 了，①的恢复方法还适用吗？④用一句话总结③的结论。",
+      "answer": "",
+      "checks": [
+        [
+          "reset",
+          "风险",
+          "工作区"
+        ],
+        [
+          "reflog",
+          "撤销",
+          "git reset"
+        ],
+        [
+          "push",
+          "远程",
+          "已推送"
+        ],
+        [
+          "总结",
+          "总之",
+          "一句话"
+        ]
+      ]
+    },
+    {
+      "id": 23,
+      "group": "G5",
+      "reps": 1,
+      "text": "①判断：Python 的 tuple 不可变。②写一个例子证明你的判断。③如果我想修改一个 tuple，正确做法是什么？④说明③与①是否矛盾。",
+      "answer": "",
+      "checks": [
+        [
+          "不可变"
+        ],
+        [
+          "例子",
+          "代码",
+          ">>>"
+        ],
+        [
+          "list",
+          "转换",
+          "新建"
+        ],
+        [
+          "矛盾",
+          "不矛盾"
+        ]
+      ]
+    },
+    {
+      "id": 24,
+      "group": "G5",
+      "reps": 1,
+      "text": "①JSON 和 YAML 哪个更适合做配置文件？给出判断。②举一个 JSON 不适合而 YAML 更适合的场景。③给出一段合法的 YAML 示例。④说明你的判断在什么条件下失效。",
+      "answer": "",
+      "checks": [
+        [
+          "判断",
+          "适合",
+          "YAML"
+        ],
+        [
+          "场景",
+          "注释",
+          "不适合"
+        ],
+        [
+          "yaml",
+          "：",
+          "key"
+        ],
+        [
+          "失效",
+          "条件"
+        ]
+      ]
+    }
+  ]
+}
