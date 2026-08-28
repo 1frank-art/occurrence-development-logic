@@ -26,7 +26,7 @@ Agent 长程任务的输出偏移；多句复合消息的子句遗漏与顺序�
 
 ## 交付物
 
-手册 v2.5＋数据摘要 v8＋测试包 v8＋题库 v8＋脚本×4（ab_test/grade/token统计/题库工具）＋skill 定义（MIT）。
+手册 v2.5＋数据摘要 v8＋测试包 v8＋题库 v8＋脚本×4（ab_test/grade/token统计/题库工具）＋SKILL.md＋install_skill.ps1（MIT）。
 
 ## 安装
 
